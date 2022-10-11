@@ -15,7 +15,7 @@ To generate your own customizable empty migrations, use </br>
 
 ## Useful URIs
 ### Animangas Project
-`localhost:8000`
+`localhost:8080`
 
 ### Adminer 
 `localhost:8090`
@@ -25,12 +25,15 @@ The database is hosted on the port 4306
 
 ## Project Tree
 
-myproject </br>
-├── backend</br>
-│   ├── Dockerfile</br>
-│   ├── main.py</br>
-│   └── requirements.txt</br>
-├── compose.yaml</br>
-└── frontend</br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── Dockerfile</br>
-&nbsp;&nbsp;&nbsp;&nbsp;└── nginx.conf</br>
+```bash
+Animanga 
+├── docker
+│   ├── adminer
+│   │   └── index.php
+│   ├── php
+│   │   └── Dockerfile
+│   └── nginx
+│       └── nginx.conf
+├── symfony (back/front)
+└── docker-compose.yaml
+```
