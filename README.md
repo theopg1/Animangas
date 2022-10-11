@@ -25,7 +25,7 @@ The database is hosted on the port 4306
 
 ## Project Tree
 
-myproject
+myproject </br>
 ├── backend</br>
 │   ├── Dockerfile</br>
 │   ├── main.py</br>
