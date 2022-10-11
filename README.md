@@ -35,5 +35,27 @@ Animanga
 │   └── nginx
 │       └── nginx.conf
 ├── symfony (back/front)
+│   ├── migrations
+│   ├── public
+│   │   ├── images
+│   │   └── styles
+│   │       └── style.css
+│   ├── src
+│   │   ├── Controller
+│   │   │   ├── Admin
+│   │   │   │   ├── AnimangaCrudController.php
+│   │   │   │   └── GenresCrudController.php
+│   │   │   ├── AnimangaController.php
+│   │   │   └── GenresCrudController.php
+│   │   ├── Entity
+│   │   │   ├── Animanga.php
+│   │   │   └── Genres.php
+│   │   └── Repository
+│   │       ├── AnimangaRepository.php
+│   │       └── GenresRepository.php
+│   ├── templates
+│   │   ├── animanga.html.twig
+│   │   └── ...
+│   └── ...
 └── docker-compose.yaml
 ```
