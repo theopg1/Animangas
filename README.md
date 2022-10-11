@@ -25,12 +25,12 @@ The database is hosted on the port 4306
 
 ## Project Tree
 
-myproject/
-├── backend
-│   ├── Dockerfile
-│   ├── main.py
-│   └── requirements.txt
-├── compose.yaml
-└── frontend
-    ├── Dockerfile
-    └── nginx.conf
+myproject
+├── backend/
+│   ├── Dockerfile/
+│   ├── main.py/
+│   └── requirements.txt/
+├── compose.yaml/
+└── frontend/
+    ├── Dockerfile/
+    └── nginx.conf/
