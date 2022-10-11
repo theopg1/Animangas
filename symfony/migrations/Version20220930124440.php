@@ -21,12 +21,17 @@ final class Version20220930124440 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE animanga CHANGE release_date release_date VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE animanga CHANGE synopsis synopsis LONGTEXT DEFAULT NULL');
+
+
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE animanga CHANGE release_date release_date TINYINT CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci` COMMENT \'(DC2Type:array)\'');
+        $this->addSql('ALTER TABLE animanga CHANGE synopsis synopsis varchar(255) DEFAULT NULL');
+
     }
 }
 
