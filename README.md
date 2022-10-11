@@ -32,5 +32,5 @@ myproject
 │   └── requirements.txt</br>
 ├── compose.yaml</br>
 └── frontend</br>
-&nbsp;├── Dockerfile</br>
-&nbsp;└── nginx.conf</br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Dockerfile</br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── nginx.conf</br>
