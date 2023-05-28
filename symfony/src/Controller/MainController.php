@@ -212,6 +212,61 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/random", name="genreRandom")
+     */
+    public function genreRandom(AnimangaRepository $repository, Request $request, ManagerRegistry $doctrine,
+                             UserRepository $users, AvisRepository $avisRepo ) : Response
+    {
+
+        $frontEndIdenticator = new FrontEndAuthenticator();
+
+        $userId = $frontEndIdenticator->getUserId($users, $request->getSession());
+
+        $animangaId = rand(1, 2000);
+        $isUserValid = $userId !== false;
+
+        $animanga = $repository->findOneBy(['id' => $animangaId]);
+        $avisList = $avisRepo->findBy(["animanga"=> $animanga]);
+
+        $entityManager = $doctrine->getManager();
+        $form = $this->createFormBuilder()->add('comment', TextareaType::class)->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            if($userId !== false){
+
+                $user = $users->find($userId);
+
+                $avis = new Avis();
+                $avis->setComment($form["comment"]->getData());
+                $avis->setAnimanga($animanga);
+                $avis->setUser($user);
+
+                $entityManager->persist($avis);
+                $entityManager->flush();
+
+                return $this->redirect($request->getUri());
+
+            }
+            else{
+                $isUserValid = true;
+            }
+        }
+
+        $renderArr = [
+            'animanga' => $animanga,
+            'avis' => $avisList,
+            "form" => $form->createView(),
+            'id' => $userId,
+
+        ];
+
+        return $this->render($isUserValid? 'animanga.html.twig' : 'animangaNoComment.html.twig', $renderArr);
+    }
+
+    /**
      * @Route("/users/{id}", name="users")
      */
     public function userProfil( int $id = null,Request $request, ManagerRegistry $doctrine,
