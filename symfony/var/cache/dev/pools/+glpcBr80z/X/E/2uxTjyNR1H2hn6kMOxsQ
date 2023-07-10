@@ -1,0 +1,22 @@
+<?php //App%255CEntity%255CAvis%2524animanga
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'targetEntity' => [
+                'App\\Entity\\Animanga',
+            ],
+            'inversedBy' => [
+                'feedbacks',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];
