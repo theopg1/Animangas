@@ -1,6 +1,6 @@
 import urllib
 from urllib import request
-import pymysql
+import sqlite3
 import bs4
 
 class Scraping:
@@ -9,7 +9,7 @@ class Scraping:
     @staticmethod
     def animeScraping(id):
 
-        conn = pymysql.connect(host="13.38.227.228", port=4306, user="symfony", password="symfony", db="projet_master")
+        conn = sqlite3.connect('animangas.db')
 
         cursor = conn.cursor()
 
@@ -80,9 +80,12 @@ class Scraping:
                 saison = sortieSplit[0]
                 année = sortieSplit[1]
 
-            sql = """INSERT INTO anime_scrap VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+            sql = """INSERT INTO animes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+
             data = (id, title, originalTitle, Type, genres, synopsis, aired, saison, année, episodes, status, image, score, rank, popularity)
-            print(cursor.execute(sql, data))
+
+            cursor.execute(sql, data)
+
             conn.commit()
 
         except:
@@ -93,7 +96,7 @@ class Scraping:
     @staticmethod
     def mangaScraping(id):
 
-        conn = pymysql.connect(host="13.38.227.228", port=4306, user="symfony", password="symfony", db="projet_master")
+        conn = sqlite3.connect('animangas.db')
 
         cursor = conn.cursor()
 
@@ -162,7 +165,7 @@ class Scraping:
             #popularity
             popularity = page.find('span', {'class' : 'numbers popularity'}).find('strong').text.replace("#","").strip()
 
-            sql = """INSERT INTO manga_scrap VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+            sql = """INSERT INTO mangas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
 
             data = (id, title, originalTitle, Type, genres, synopsis, published, tomes, chapitres, status, image, score, rank, popularity)
 
